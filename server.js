@@ -23,7 +23,13 @@ app.use(express.static(path.join(__dirname, "public")));
 // genAI-г global байдлаар биш, хэрэгцээтэй үед нь дууддаг функц болгох
 const getGenAIModel = () => {
   const apiKey = process.env.GEMINI_API_KEY;
-  if (!apiKey) return null;
+
+  if (apiKey) {
+    console.log("✅ ENV: GEMINI_API_KEY амжилттай уншигдлаа.");
+  } else {
+    console.error("❌ ENV: GEMINI_API_KEY олдохгүй байна (undefined).");
+    return null;
+  }
 
   const genAI = new GoogleGenerativeAI(apiKey);
 
