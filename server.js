@@ -1,4 +1,6 @@
-import "dotenv/config";
+if (process.env.NODE_ENV !== 'production') {
+  await import('dotenv/config');
+}
 import express from "express";
 import multer from "multer";
 import tesseract from "node-tesseract-ocr";
