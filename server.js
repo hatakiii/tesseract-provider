@@ -16,6 +16,9 @@ const __dirname = path.dirname(__filename);
 const app = express();
 app.use(cors());
 
+// Serve static files from the public directory so the frontend works both locally and on deployment
+app.use(express.static(path.join(__dirname, "public")));
+
 // --- АНХААРАХ ХЭСЭГ ---
 // genAI-г global байдлаар биш, хэрэгцээтэй үед нь дууддаг функц болгох
 const getGenAIModel = () => {

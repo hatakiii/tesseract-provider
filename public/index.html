@@ -365,7 +365,10 @@
             });
 
             try {
-                const baseUrl = window.location.protocol === 'file:' ? 'http://localhost:3000' : '';
+                // Өөр апп-с дуудвал эсвэл file:// дээр байвал localhost эсвэл production хаягаа ашиглана
+                const isLocal = window.location.hostname === 'localhost' || window.location.protocol === 'file:';
+                const baseUrl = isLocal ? 'http://localhost:3000' : 'https://tesseract-provider-production.up.railway.app';
+                
                 const response = await fetch(baseUrl + '/ocr', {
                     method: 'POST',
                     body: formData
