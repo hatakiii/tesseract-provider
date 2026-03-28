@@ -26,8 +26,8 @@ const getGenAIModel = () => {
   if (!apiKey) return null;
 
   const genAI = new GoogleGenerativeAI(apiKey);
-  // Моделийн нэрийг gemini-1.5-flash болгож засав (2.5 одоогоор байхгүй)
-  return genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+
+  return genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
 };
 
 const uploadDir = path.join(os.tmpdir(), "tesseract-uploads");
